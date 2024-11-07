@@ -15,12 +15,25 @@
 """
 
 
-def fibonaccci(n: int) -> int:
+import argparse
+import sys
+
+
+def fibonaccci_iterative(n: int) -> int:
     if n <= 0:
         return 0
     elif n == 1:
         return 1
     else:
-        return fibonaccci(n-1) + fibonaccci(n-2)
+        return fibonaccci_iterative(n-1) + fibonaccci_iterative(n-2)
 
-print(fibonaccci(12))
+if __name__ == '--main--':
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('nth', type=int, help='The position in the Fibonacci sequence to calculate.')
+    #parser.add_argument('-c','--count')
+    #parser.add_argument('-v','--verbose', action='store_true')
+    args = parser.parse_args()
+    
+    result = fibonaccci_iterative(args.nth)
+    print(result)
