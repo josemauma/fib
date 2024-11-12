@@ -17,8 +17,10 @@
 
 import argparse
 import sys
+from functools import cache
 
 
+@cache
 def fibonaccci_iterative(n: int) -> int:
     if n <= 0:
         return 0
@@ -26,6 +28,12 @@ def fibonaccci_iterative(n: int) -> int:
         return 1
     else:
         return fibonaccci_iterative(n-1) + fibonaccci_iterative(n-2)
+
+def fibonacci_recursive(n: int) -> int:
+    if n <= 0:
+        raise ValueError("n must be greater than or equal to zero")
+    if n < 2:
+        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
 if __name__ == '--main--':
     parser = argparse.ArgumentParser()
