@@ -17,8 +17,9 @@
 
 import argparse
 import sys
+from functools import cache
 
-
+@cache
 def fibonaccci_iterative(n: int) -> int:
     if n <= 0:
         return 0
