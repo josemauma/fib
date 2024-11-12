@@ -22,9 +22,9 @@ from functools import cache
 @cache
 def fibonaccci_iterative(n: int) -> int:
     if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
+        raise ValueError("n must be greater than or equal to 0")
+    elif n < 2:
+        return 2
     else:
         return fibonaccci_iterative(n-1) + fibonaccci_iterative(n-2)
 
